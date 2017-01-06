@@ -498,6 +498,9 @@ const Select = React.createClass({
 					event.stopPropagation();
 				}
 			break;
+			case 32: // spacebar
+				this.setState({ isOpen: true });
+			break;
 			case 38: // up
 				this.focusPreviousOption();
 			break;
