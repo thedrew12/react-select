@@ -70,13 +70,13 @@ const Option = React.createClass({
 		var className = classNames(this.props.className, option.className);
 
 		return option.disabled ? (
-			<div className={className}
+			<li className={className}
 				onMouseDown={this.blockEvent}
 				onClick={this.blockEvent}>
 				{this.props.children}
-			</div>
+			</li>
 		) : (
-			<div className={className}
+			<li className={className}
 				style={option.style}
 				role="option"
 				onMouseDown={this.handleMouseDown}
@@ -85,12 +85,11 @@ const Option = React.createClass({
 				onTouchStart={this.handleTouchStart}
 				onTouchMove={this.handleTouchMove}
 				onTouchEnd={this.handleTouchEnd}
-				tabIndex="0"
 				aria-selected={this.props.isSelected}
 				id={instancePrefix + '-option-' + optionIndex}
 				title={option.title}>
 				{this.props.children}
-			</div>
+			</li>
 		);
 	}
 });

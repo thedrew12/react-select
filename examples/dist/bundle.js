@@ -717,13 +717,13 @@ var Option = _react2['default'].createClass({
 		var className = (0, _classnames2['default'])(this.props.className, option.className);
 
 		return option.disabled ? _react2['default'].createElement(
-			'div',
+			'li',
 			{ className: className,
 				onMouseDown: this.blockEvent,
 				onClick: this.blockEvent },
 			this.props.children
 		) : _react2['default'].createElement(
-			'div',
+			'li',
 			{ className: className,
 				style: option.style,
 				role: 'option',
@@ -733,7 +733,6 @@ var Option = _react2['default'].createClass({
 				onTouchStart: this.handleTouchStart,
 				onTouchMove: this.handleTouchMove,
 				onTouchEnd: this.handleTouchEnd,
-				tabIndex: '0',
 				'aria-selected': this.props.isSelected,
 				id: instancePrefix + '-option-' + optionIndex,
 				title: option.title },
@@ -2121,7 +2120,7 @@ var Select = _react2['default'].createClass({
 					return _this7.menuContainer = ref;
 				}, className: 'Select-menu-outer', style: this.props.menuContainerStyle },
 			_react2['default'].createElement(
-				'div',
+				'ul',
 				{ ref: function (ref) {
 						return _this7.menu = ref;
 					}, role: 'listbox', className: 'Select-menu', id: this._instancePrefix + '-list',
@@ -2201,7 +2200,7 @@ var Select = _react2['default'].createClass({
 				this.renderClear(),
 				this.renderArrow()
 			),
-			this.renderOuter(options, !this.props.multi ? valueArray : null, focusedOption)
+			isOpen ? this.renderOuter(options, !this.props.multi ? valueArray : null, focusedOption) : null
 		);
 	}
 
