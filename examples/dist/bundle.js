@@ -1951,7 +1951,6 @@ var Select = _react2['default'].createClass({
 
 			return _react2['default'].createElement('div', _extends({}, divProps, {
 				role: this.props.searchable ? 'combobox' : 'listbox',
-				'aria-label': !this.props.searchable && this.props['aria-label'],
 				'aria-expanded': isOpen,
 				'aria-owns': isOpen ? this._instancePrefix + '-list' : this._instancePrefix + '-value',
 				'aria-activedescendant': isOpen ? this._instancePrefix + '-option-' + focusedOptionIndex : this._instancePrefix + '-value',
