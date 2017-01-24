@@ -1031,11 +1031,25 @@ const Select = React.createClass({
 		}
 
 		return (
-			<div ref={ref => this.menuContainer = ref} className="Select-menu-outer" style={this.props.menuContainerStyle}>
-				<ul ref={ref => this.menu = ref} role="listbox" className="Select-menu" id={this._instancePrefix + '-list'}
-						 style={this.props.menuStyle}
-						 onScroll={this.handleMenuScroll}
-						 onMouseDown={this.handleMouseDownOnMenu}>
+			<div>
+			<div
+				aria-expanded={isOpen}
+				aria-owns={isOpen ? this._instancePrefix + '-list' : this._instancePrefix + '-value'}
+				aria-activedescendant={isOpen ? this._instancePrefix + '-option-' + focusedOptionIndex : this._instancePrefix + '-value'}
+				tabIndex={this.props.tabIndex || 0}
+				onBlur={this.handleInputBlur}
+				onFocus={this.handleInputFocus}
+				ref={ref => this.menuContainer = ref}
+				className="Select-menu-outer"
+				style={this.props.menuContainerStyle}/>
+				<ul
+					ref={ref => this.menu = ref}
+					role="listbox"
+					className="Select-menu"
+					id={this._instancePrefix + '-list'}
+				 	style={this.props.menuStyle}
+				 	onScroll={this.handleMenuScroll}
+				 	onMouseDown={this.handleMouseDownOnMenu}>
 					{menu}
 				</ul>
 			</div>
@@ -1097,7 +1111,7 @@ const Select = React.createClass({
 				>
 					<span className="Select-multi-value-wrapper" id={this._instancePrefix + '-value'}>
 						{this.renderValue(valueArray, isOpen)}
-						{this.renderInput(valueArray, focusedOptionIndex)}
+						{this.props.searchable && this.renderInput(valueArray, focusedOptionIndex)}
 					</span>
 					{removeMessage}
 					{this.renderLoading()}
