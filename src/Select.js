@@ -1111,7 +1111,7 @@ const Select = React.createClass({
 				>
 					<span className="Select-multi-value-wrapper" id={this._instancePrefix + '-value'}>
 						{this.renderValue(valueArray, isOpen)}
-						{this.props.searchable && this.renderInput(valueArray, focusedOptionIndex)}
+						{this.renderInput(valueArray, focusedOptionIndex)}
 					</span>
 					{removeMessage}
 					{this.renderLoading()}
