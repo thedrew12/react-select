@@ -840,7 +840,8 @@ var Value = _react2['default'].createClass({
 			'div',
 			{ className: (0, _classnames2['default'])('Select-value', this.props.value.className),
 				style: this.props.value.style,
-				title: this.props.value.title
+				title: this.props.value.title,
+				tabIndex: '0'
 			},
 			this.renderRemoveIcon(),
 			this.renderLabel()
@@ -2094,9 +2095,9 @@ var Select = _react2['default'].createClass({
 
 		var focusedOption = this.state.focusedOption || selectedOption;
 		if (focusedOption && !focusedOption.disabled) {
-			var focusedOptionIndex = options.indexOf(focusedOption);
-			if (focusedOptionIndex !== -1) {
-				return focusedOptionIndex;
+			var _focusedOptionIndex = options.indexOf(focusedOption);
+			if (_focusedOptionIndex !== -1) {
+				return _focusedOptionIndex;
 			}
 		}
 
@@ -2116,9 +2117,18 @@ var Select = _react2['default'].createClass({
 
 		return _react2['default'].createElement(
 			'div',
-			{ ref: function (ref) {
+			{
+				'aria-expanded': this.state.isOpen,
+				'aria-owns': this.state.isOpen ? this._instancePrefix + '-list' : this._instancePrefix + '-value',
+				'aria-activedescendant': this.state.isOpen ? this._instancePrefix + '-option-' + focusedOptionIndex : this._instancePrefix + '-value',
+				onBlur: this.handleInputBlur,
+				onFocus: this.handleInputFocus,
+				'aria-readonly': '' + !!this.props.disabled,
+				ref: function (ref) {
 					return _this7.menuContainer = ref;
-				}, className: 'Select-menu-outer', style: this.props.menuContainerStyle },
+				},
+				className: 'Select-menu-outer',
+				style: this.props.menuContainerStyle },
 			_react2['default'].createElement(
 				'ul',
 				{ ref: function (ref) {
