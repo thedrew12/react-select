@@ -733,6 +733,7 @@ var Option = _react2['default'].createClass({
 				onTouchStart: this.handleTouchStart,
 				onTouchMove: this.handleTouchMove,
 				onTouchEnd: this.handleTouchEnd,
+				'aria-selected': this.props.isSelected,
 				id: instancePrefix + '-option-' + optionIndex,
 				title: option.title },
 			this.props.children
@@ -829,7 +830,7 @@ var Value = _react2['default'].createClass({
 			this.props.children
 		) : _react2['default'].createElement(
 			'span',
-			{ className: className, role: 'option', 'aria-selected': 'true', id: this.props.id },
+			{ className: className, 'aria-selected': 'true', id: this.props.id },
 			this.props.children
 		);
 	},
@@ -2122,7 +2123,7 @@ var Select = _react2['default'].createClass({
 				'ul',
 				{ ref: function (ref) {
 						return _this7.menu = ref;
-					}, role: 'listbox', className: 'Select-menu', id: this._instancePrefix + '-list',
+					}, role: 'listbox', className: 'Select-menu', tabIndex: '0', id: this._instancePrefix + '-list',
 					style: this.props.menuStyle,
 					onScroll: this.handleMenuScroll,
 					onMouseDown: this.handleMouseDownOnMenu },
@@ -2192,7 +2193,7 @@ var Select = _react2['default'].createClass({
 					'span',
 					{ className: 'Select-multi-value-wrapper', id: this._instancePrefix + '-value' },
 					this.renderValue(valueArray, isOpen),
-					this.renderInput(valueArray, focusedOptionIndex)
+					this.props.searchable && this.renderInput(valueArray, focusedOptionIndex)
 				),
 				removeMessage,
 				this.renderLoading(),

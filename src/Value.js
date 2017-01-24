@@ -74,7 +74,7 @@ const Value = React.createClass({
 				{this.props.children}
 			</a>
 		) : (
-			<span className={className} role="option" aria-selected="true" id={this.props.id}>
+			<span className={className} aria-selected="true" id={this.props.id}>
 				{this.props.children}
 			</span>
 		);
