@@ -1707,7 +1707,7 @@ var Select = _react2['default'].createClass({
 			var divProps = _objectWithoutProperties(_props$inputProps, ['inputClassName']);
 
 			return _react2['default'].createElement('div', _extends({}, divProps, {
-				role: 'combobox',
+				role: this.props.searchable ? 'combobox' : null,
 				'aria-expanded': isOpen,
 				'aria-owns': isOpen ? this._instancePrefix + '-list' : this._instancePrefix + '-value',
 				'aria-activedescendant': isOpen ? this._instancePrefix + '-option-' + focusedOptionIndex : this._instancePrefix + '-value',
@@ -1879,7 +1879,7 @@ var Select = _react2['default'].createClass({
 				'ul',
 				{ ref: function (ref) {
 						return _this7.menu = ref;
-					}, role: 'listbox', className: 'Select-menu', tabIndex: '0', id: this._instancePrefix + '-list',
+					}, role: 'listbox', className: 'Select-menu', id: this._instancePrefix + '-list',
 					style: this.props.menuStyle,
 					onScroll: this.handleMenuScroll,
 					onMouseDown: this.handleMouseDownOnMenu },
@@ -1949,7 +1949,7 @@ var Select = _react2['default'].createClass({
 					'span',
 					{ className: 'Select-multi-value-wrapper', id: this._instancePrefix + '-value' },
 					this.renderValue(valueArray, isOpen),
-					this.props.searchable && this.renderInput(valueArray, focusedOptionIndex)
+					this.renderInput(valueArray, focusedOptionIndex)
 				),
 				removeMessage,
 				this.renderLoading(),
