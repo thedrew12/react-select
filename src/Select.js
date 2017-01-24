@@ -1031,7 +1031,16 @@ const Select = React.createClass({
 		}
 
 		return (
-			<div ref={ref => this.menuContainer = ref} className="Select-menu-outer" style={this.props.menuContainerStyle}>
+			<div
+				aria-expanded={this.state.isOpen}
+				aria-owns={this.state.isOpen ? this._instancePrefix + '-list' : this._instancePrefix + '-value'}
+				aria-activedescendant={this.state.isOpen ? this._instancePrefix + '-option-' + focusedOptionIndex : this._instancePrefix + '-value'}
+				onBlur={this.handleInputBlur}
+				onFocus={this.handleInputFocus}
+				aria-readonly={'' + !!this.props.disabled}
+				ref={ref => this.menuContainer = ref}
+				className="Select-menu-outer"
+				style={this.props.menuContainerStyle}>
 				<ul ref={ref => this.menu = ref} role="listbox" className="Select-menu" id={this._instancePrefix + '-list'}
 						 style={this.props.menuStyle}
 						 onScroll={this.handleMenuScroll}
