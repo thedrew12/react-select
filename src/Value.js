@@ -85,7 +85,6 @@ const Value = React.createClass({
 			<div className={classNames('Select-value', this.props.value.className)}
 				style={this.props.value.style}
 				title={this.props.value.title}
-				tabIndex="0"
 				>
 				{this.renderRemoveIcon()}
 				{this.renderLabel()}
