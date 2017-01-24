@@ -740,6 +740,7 @@ var Option = _react2['default'].createClass({
 				onTouchStart: this.handleTouchStart,
 				onTouchMove: this.handleTouchMove,
 				onTouchEnd: this.handleTouchEnd,
+				tabIndex: '0',
 				'aria-selected': this.props.isSelected,
 				id: instancePrefix + '-option-' + optionIndex,
 				title: option.title },
@@ -1850,9 +1851,9 @@ var Select = _react2['default'].createClass({
 
 		var focusedOption = this.state.focusedOption || selectedOption;
 		if (focusedOption && !focusedOption.disabled) {
-			var _focusedOptionIndex = options.indexOf(focusedOption);
-			if (_focusedOptionIndex !== -1) {
-				return _focusedOptionIndex;
+			var focusedOptionIndex = options.indexOf(focusedOption);
+			if (focusedOptionIndex !== -1) {
+				return focusedOptionIndex;
 			}
 		}
 
@@ -1872,28 +1873,14 @@ var Select = _react2['default'].createClass({
 
 		return _react2['default'].createElement(
 			'div',
-			null,
-			_react2['default'].createElement('div', {
-				'aria-expanded': isOpen,
-				'aria-owns': isOpen ? this._instancePrefix + '-list' : this._instancePrefix + '-value',
-				'aria-activedescendant': isOpen ? this._instancePrefix + '-option-' + focusedOptionIndex : this._instancePrefix + '-value',
-				tabIndex: this.props.tabIndex || 0,
-				onBlur: this.handleInputBlur,
-				onFocus: this.handleInputFocus,
-				ref: function (ref) {
+			{ ref: function (ref) {
 					return _this7.menuContainer = ref;
-				},
-				className: 'Select-menu-outer',
-				style: this.props.menuContainerStyle }),
+				}, className: 'Select-menu-outer', style: this.props.menuContainerStyle },
 			_react2['default'].createElement(
-				'ul',
-				{
-					ref: function (ref) {
+				'div',
+				{ ref: function (ref) {
 						return _this7.menu = ref;
-					},
-					role: 'listbox',
-					className: 'Select-menu',
-					id: this._instancePrefix + '-list',
+					}, role: 'listbox', className: 'Select-menu', id: this._instancePrefix + '-list',
 					style: this.props.menuStyle,
 					onScroll: this.handleMenuScroll,
 					onMouseDown: this.handleMouseDownOnMenu },

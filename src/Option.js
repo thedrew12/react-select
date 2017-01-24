@@ -85,6 +85,7 @@ const Option = React.createClass({
 				onTouchStart={this.handleTouchStart}
 				onTouchMove={this.handleTouchMove}
 				onTouchEnd={this.handleTouchEnd}
+				tabIndex="0"
 				aria-selected={this.props.isSelected}
 				id={instancePrefix + '-option-' + optionIndex}
 				title={option.title}>
