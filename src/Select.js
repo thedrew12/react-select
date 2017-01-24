@@ -865,7 +865,7 @@ const Select = React.createClass({
 			return (
 				<div
 					{...divProps}
-					role={this.props.searchable ? 'combobox' : 'listbox'}
+					role="combobox"
 					aria-expanded={isOpen}
 					aria-owns={isOpen ? this._instancePrefix + '-list' : this._instancePrefix + '-value'}
 					aria-activedescendant={isOpen ? this._instancePrefix + '-option-' + focusedOptionIndex : this._instancePrefix + '-value'}
@@ -1032,12 +1032,12 @@ const Select = React.createClass({
 
 		return (
 			<div ref={ref => this.menuContainer = ref} className="Select-menu-outer" style={this.props.menuContainerStyle}>
-				<div ref={ref => this.menu = ref} role="listbox" className="Select-menu" id={this._instancePrefix + '-list'}
+				<ul ref={ref => this.menu = ref} role="listbox" className="Select-menu" id={this._instancePrefix + '-list'}
 						 style={this.props.menuStyle}
 						 onScroll={this.handleMenuScroll}
 						 onMouseDown={this.handleMouseDownOnMenu}>
 					{menu}
-				</div>
+				</ul>
 			</div>
 		);
 	},

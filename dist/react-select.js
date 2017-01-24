@@ -740,8 +740,6 @@ var Option = _react2['default'].createClass({
 				onTouchStart: this.handleTouchStart,
 				onTouchMove: this.handleTouchMove,
 				onTouchEnd: this.handleTouchEnd,
-				tabIndex: '0',
-				'aria-selected': this.props.isSelected,
 				id: instancePrefix + '-option-' + optionIndex,
 				title: option.title },
 			this.props.children
@@ -1708,7 +1706,7 @@ var Select = _react2['default'].createClass({
 			var divProps = _objectWithoutProperties(_props$inputProps, ['inputClassName']);
 
 			return _react2['default'].createElement('div', _extends({}, divProps, {
-				role: this.props.searchable ? 'combobox' : 'listbox',
+				role: 'combobox',
 				'aria-expanded': isOpen,
 				'aria-owns': isOpen ? this._instancePrefix + '-list' : this._instancePrefix + '-value',
 				'aria-activedescendant': isOpen ? this._instancePrefix + '-option-' + focusedOptionIndex : this._instancePrefix + '-value',
@@ -1877,7 +1875,7 @@ var Select = _react2['default'].createClass({
 					return _this7.menuContainer = ref;
 				}, className: 'Select-menu-outer', style: this.props.menuContainerStyle },
 			_react2['default'].createElement(
-				'div',
+				'ul',
 				{ ref: function (ref) {
 						return _this7.menu = ref;
 					}, role: 'listbox', className: 'Select-menu', id: this._instancePrefix + '-list',
