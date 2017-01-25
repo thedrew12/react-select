@@ -865,11 +865,10 @@ const Select = React.createClass({
 			return (
 				<div
 					{...divProps}
-					role={this.props.searchable ? 'combobox' : 'listbox'}
+					role="combobox"
 					aria-expanded={isOpen}
 					aria-owns={isOpen ? this._instancePrefix + '-list' : this._instancePrefix + '-value'}
 					aria-activedescendant={isOpen ? this._instancePrefix + '-option-' + focusedOptionIndex : this._instancePrefix + '-value'}
-					aria-label={this.props['aria-label']}
 					className={className}
 					tabIndex={this.props.tabIndex || 0}
 					onBlur={this.handleInputBlur}

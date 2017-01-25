@@ -1950,11 +1950,10 @@ var Select = _react2['default'].createClass({
 			var divProps = _objectWithoutProperties(_props$inputProps, ['inputClassName']);
 
 			return _react2['default'].createElement('div', _extends({}, divProps, {
-				role: this.props.searchable ? 'combobox' : 'listbox',
+				role: 'combobox',
 				'aria-expanded': isOpen,
 				'aria-owns': isOpen ? this._instancePrefix + '-list' : this._instancePrefix + '-value',
 				'aria-activedescendant': isOpen ? this._instancePrefix + '-option-' + focusedOptionIndex : this._instancePrefix + '-value',
-				'aria-label': this.props['aria-label'],
 				className: className,
 				tabIndex: this.props.tabIndex || 0,
 				onBlur: this.handleInputBlur,
