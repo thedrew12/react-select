@@ -827,7 +827,7 @@ const Select = React.createClass({
 
 	renderInput (valueArray, focusedOptionIndex) {
 		var className = classNames('Select-input', this.props.inputProps.className);
-		const isOpen = !!this.state.isOpen;
+		const isOpen = !!this.state.isOpen || !!this.state.isFocused;
 
 		const ariaOwns = classNames({
 			[this._instancePrefix + '-list']: isOpen,
@@ -1045,7 +1045,7 @@ const Select = React.createClass({
 	render () {
 		let valueArray = this.getValueArray(this.props.value);
 		let options =	this._visibleOptions = this.filterOptions(this.props.multi ? this.getValueArray(this.props.value) : null);
-		let isOpen = this.state.isOpen;
+		let isOpen = this.state.isOpen || this.state.isFocused;
 		if (this.props.multi && !options.length && valueArray.length && !this.state.inputValue) isOpen = false;
 		const focusedOptionIndex = this.getFocusableOptionIndex(valueArray[0]);
 
@@ -1104,7 +1104,7 @@ const Select = React.createClass({
 					{this.renderClear()}
 					{this.renderArrow()}
 				</div>
-				{isOpen || this.state.isFocused ? this.renderOuter(options, !this.props.multi ? valueArray : null, focusedOption) : null}
+				{isOpen ? this.renderOuter(options, !this.props.multi ? valueArray : null, focusedOption) : null}
 			</div>
 		);
 	}
